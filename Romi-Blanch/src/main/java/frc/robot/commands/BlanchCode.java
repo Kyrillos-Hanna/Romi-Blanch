@@ -40,11 +40,11 @@ public class BlanchCode extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    while (m_gyro.getAngleY() < Constants.kRampAngle) {
+    while (m_gyro.getAngleY() < 0) {
       m_db.arcadeDrive(0.3, 0);
     }
 
-    if (m_gyro.getAngleY() > Constants.kRampAngle) {
+    if (m_gyro.getAngleY() > 0) {
       onRamp = true;
     }
 
