@@ -6,6 +6,7 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.ExampleCommand;
+import frc.robot.commands.MoveForwardWithPID;
 import frc.robot.sensor.RomiGyro;
 import frc.robot.subsystems.RomiDrivetrain;
 import edu.wpi.first.wpilibj2.command.Command;
@@ -23,6 +24,7 @@ public class RobotContainer {
   private final RomiGyro m_RomiGyro = new RomiGyro();
 
   private final BlanchCode m_BlanchCode = new BlanchCode(m_romiDrivetrain, m_RomiGyro);
+  private final MoveForwardWithPID m_moveForwardPID = new MoveForwardWithPID(m_romiDrivetrain, 10, m_RomiGyro);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -45,6 +47,6 @@ public class RobotContainer {
    */
   public Command getAutonomousCommand() {
     // An ExampleCommand will run in autonomous
-    return m_BlanchCode;
+    return m_moveForwardPID;
   }
 }
